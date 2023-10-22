@@ -4,7 +4,7 @@ A lightweight and efficient tool written in Rust for decoding JSON Web Tokens (J
 ## Usage
 
 ```bash
-certinfo [OPTIONS] <DOMAIN>
+jwtd [OPTIONS] <DOMAIN>
 ```
 
 ### Options
