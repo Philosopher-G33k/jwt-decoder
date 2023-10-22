@@ -1,5 +1,5 @@
 # jwt-decoder
-A lightweight and efficient tool written in Rust for decoding JSON Web Tokens (JWT)
+A lightweight and efficient tool written in Rust for decoding JSON Web Tokens (JWT) on commad line
 
 ## Usage
 
