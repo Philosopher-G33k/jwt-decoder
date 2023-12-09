@@ -4,7 +4,7 @@ A lightweight and efficient tool written in Rust for decoding JSON Web Tokens (J
 ## Usage
 
 ```bash
-jwtd [OPTIONS] <DOMAIN>
+jwtd [OPTIONS] <JWT>
 ```
 
 ### Options
