@@ -7,7 +7,7 @@ pub mod config {
 pub struct Config {
     /// Name of the person to greet
     #[arg(short, long)]
-    pub decoce: String,
+    pub decode: String,
 
     // Number of times to greet
     // #[arg(short, long, default_value_t = 1)]

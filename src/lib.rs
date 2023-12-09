@@ -1,9 +1,9 @@
 mod config;
 
 use clap::Parser;
-use openssl::base64;
 use std::error::Error;
 use serde::{Deserialize, Serialize};
+use base64::{Engine as _, engine::general_purpose};
 
 
 pub fn run() {
@@ -12,7 +12,7 @@ pub fn run() {
 
 fn get_args() {
     let config = config::config::Config::parse();
-    decode(&config.decoce);
+    decode(&config.decode);
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -46,8 +46,11 @@ fn process_jwt(jwt: &str) -> Result<[serde_json::Value; 2], Box<dyn Error>> {
     let jwt_body = splitted_jwt_strings.get(1).ok_or(Box::<dyn Error>::from(
         "Could not find separator in jwt string.",
     ))?;
-    let decoded_jwt_header = base64::decode_block(jwt_header);
-    let decoded_jwt_body = base64::decode_block(jwt_body);
+    // let decoded_jwt_header = base64::decode_block(jwt_header);
+    // let decoded_jwt_body = base64::decode_block(jwt_body);
+
+    let decoded_jwt_header = general_purpose::STANDARD.decode(jwt_header);
+    let decoded_jwt_body = general_purpose::STANDARD.decode(jwt_body);
 
     let converted_jwt_header = String::from_utf8(decoded_jwt_header?)?;
     let converted_jwt_body = String::from_utf8(decoded_jwt_body?)?;
